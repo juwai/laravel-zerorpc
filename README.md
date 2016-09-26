@@ -1,7 +1,8 @@
 # laravel-zerorpc
 
-This package provides an easy way connecting to
-[ZeroRPC](https://github.com/0rpc/zerorpc-php) from a Laravel application.
+This package provides an easy way of connecting to
+[zerorpc](http://www.zerorpc.io/) from a Laravel application. It uses the
+[PHP zerorpc](https://github.com/0rpc/zerorpc-php) client.
 
 ## Installation
 
@@ -10,7 +11,7 @@ This package provides an easy way connecting to
     ```php
     'aliases' => [
         ...
-        'RPC' => Juwai\LaravelZeroRPC\Facades\ZeroRPC::class,
+        'ZeroRPC' => Juwai\LaravelZeroRPC\Facades\ZeroRPC::class,
     ],
     ```
 
