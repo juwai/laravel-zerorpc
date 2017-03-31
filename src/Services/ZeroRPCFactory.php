@@ -31,4 +31,10 @@ class ZeroRPCFactory
 
         return $client;
     }
+
+    public function destroyClient($serviceName, $version, $timeout = null)
+    {
+        $key = $serviceName . $version . $timeout;
+        unset(self::$_clients[$key]);
+    }
 }

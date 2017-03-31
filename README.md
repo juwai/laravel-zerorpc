@@ -38,3 +38,21 @@ This package provides an easy way of connecting to
 $client = RPC::get('service_one', '1.0');
 $response = $client->service_function($param1, $param2);
 ```
+
+**Known Issue:**
+
+Some times the results are messed up after timeout. Example:
+```
+$client = RPC::get('service_one', '1.0');
+
+$client->functionA(); // Timeout
+$client->functionA(); // Try again, succeed
+$client->functionB(); // Return the result of first call
+
+```
+**Solution**:
+
+Don't reuse the RPC connection after timeout by destroying the client.
+```
+RPC::destroyClient('service_one', '1.0');
+```
