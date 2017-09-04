@@ -38,3 +38,11 @@ This package provides an easy way of connecting to
 $client = RPC::get('service_one', '1.0');
 $response = $client->service_function($param1, $param2);
 ```
+
+## Configurations
+
+### debugbar_rpc_monitor
+Monitor RPC connections on Debugbar panels.
+Make sure you installed [Debugbar](https://github.com/barryvdh/laravel-debugbar) if you want to enable it.
+
+Default: `false`

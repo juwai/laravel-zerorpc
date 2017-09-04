@@ -12,4 +12,5 @@ return [
         'access_key' => env('RPC_SERVICE_TWO_ACCESS_KEY'),
         'default'    => env('RPC_SERVICE_TWO_VERSION'),
     ],
+    'debugbar_rpc_monitor' => env('RPC_DEBUGBAR_RPC_MONITOR', false),
 ];
