@@ -46,6 +46,17 @@ class ZeroRPCContextProvider extends ServiceProvider
                 $middleware->beforeSendRequest()
             );
 
+            if ($this->app->getProvider('Barryvdh\Debugbar\ServiceProvider')) {
+                $context->registerHook(
+                    'before_send_request',
+                    $this->debugbarStartMeasure()
+                );
+                $context->registerHook(
+                    'after_response',
+                    $this->debugbarStopMeasure()
+                );
+            }
+
             return $context;
         });
     }
@@ -58,5 +69,33 @@ class ZeroRPCContextProvider extends ServiceProvider
     public function provides()
     {
         return ['Juwai\LaravelZeroRPC\Context'];
+    }
+
+    /**
+     * Debugbar start measure callback.
+     *
+     * @return function
+     */
+    private function debugbarStartMeasure()
+    {
+        return function ($event, $client) {
+            start_measure(
+                $event->header['message_id'],
+                'RPC: ' . $event->name
+            );
+            debug('RPC: ' . $event->name . ' ' . json_encode($event->args));
+        };
+    }
+
+    /**
+     * Debugbar stop measure callback.
+     *
+     * @return function
+     */
+    private function debugbarStopMeasure()
+    {
+        return function ($event, $client) {
+            stop_measure($event->header['response_to']);
+        };
     }
 }
