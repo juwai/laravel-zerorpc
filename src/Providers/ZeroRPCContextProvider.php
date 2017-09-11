@@ -46,7 +46,7 @@ class ZeroRPCContextProvider extends ServiceProvider
                 $middleware->beforeSendRequest()
             );
 
-            if (config('zerorpc.debugbar_rpc_monitor') === true) {
+            if ($this->app->getProvider('Barryvdh\Debugbar\ServiceProvider')) {
                 $context->registerHook(
                     'before_send_request',
                     $this->debugbarStartMeasure()
