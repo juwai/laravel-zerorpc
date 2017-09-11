@@ -35,7 +35,7 @@ This package provides an easy way of connecting to
 ## Usage
 
 ```php
-$client = RPC::get('service_one', '1.0');
+$client = ZeroRPC::get('service_one', '1.0');
 $response = $client->service_function($param1, $param2);
 ```
 
