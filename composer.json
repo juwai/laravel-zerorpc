@@ -8,6 +8,12 @@
             "email": "engineering@juwai.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:juwai/zerorpc-php.git"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "laravel/framework": ">=5.1.0",
