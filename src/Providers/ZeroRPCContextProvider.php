@@ -22,7 +22,7 @@ class ZeroRPCContextProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/zerorpc.php' => base_path('config' . DIRECTORY_SEPARATOR . 'zerorpc.php'),
+            __DIR__ . '/../../config/zerorpc.php' => base_path('config/zerorpc.php'),
         ]);
     }
 
