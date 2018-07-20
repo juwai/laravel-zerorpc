@@ -22,7 +22,7 @@ class ZeroRPCContextProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/zerorpc.php' => config_path('zerorpc.php'),
+            __DIR__ . '/../../config/zerorpc.php' => base_path('config/zerorpc.php'),
         ]);
     }
 
@@ -46,7 +46,7 @@ class ZeroRPCContextProvider extends ServiceProvider
                 $middleware->beforeSendRequest()
             );
 
-            if ($this->app->getProvider('Barryvdh\Debugbar\ServiceProvider')) {
+            if ($this->app->bound('Barryvdh\Debugbar\LaravelDebugbar')) {
                 $context->registerHook(
                     'before_send_request',
                     $this->debugbarStartMeasure()

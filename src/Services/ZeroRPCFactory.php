@@ -10,7 +10,7 @@ class ZeroRPCFactory
 
     public function __construct()
     {
-        $this->context = \App::make('Juwai\LaravelZeroRPC\Context');
+        $this->context = app('Juwai\LaravelZeroRPC\Context');
     }
 
     public function get($serviceName, $version, $timeout = null, $context = null)
