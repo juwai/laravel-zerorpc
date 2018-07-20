@@ -46,7 +46,7 @@ class ZeroRPCContextProvider extends ServiceProvider
                 $middleware->beforeSendRequest()
             );
 
-            if ($this->app->has('Barryvdh\Debugbar\LaravelDebugbar')) {
+            if ($this->app->bound('Barryvdh\Debugbar\LaravelDebugbar')) {
                 $context->registerHook(
                     'before_send_request',
                     $this->debugbarStartMeasure()
