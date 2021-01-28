@@ -1,8 +1,6 @@
 <?php
 namespace Juwai\LaravelZeroRPC\Services;
 
-use Log;
-use ZeroRPC\Client;
 use Juwai\LaravelZeroRPC\Services\LazyClientWrapper;
 
 class ZeroRPCFactory

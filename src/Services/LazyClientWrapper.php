@@ -1,7 +1,9 @@
 <?php
 namespace Juwai\LaravelZeroRPC\Services;
 
-/*
+use ZeroRPC\Client;
+
+/**
  * When a client object is created, the PHP client will immediately connect
  * to the endpoint. This wrapper avoids connecting until there is an actual
  * function call.
