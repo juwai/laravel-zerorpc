@@ -26,6 +26,18 @@ class LazyClientWrapper
 
     public function __call($name, $arguments)
     {
+        $this->_createClientIfNotExist();
+        return call_user_func_array([$this->_client, $name], $arguments);
+    }
+
+    public function async($name, array $args, &$response)
+    {
+        $this->_createClientIfNotExist();
+        return $this->_client->async($name, $args, $response);
+    }
+
+    private function _createClientIfNotExist()
+    {
         if (is_null($this->_client)) {
             $this->_client = new Client(
                 $this->_serviceName,
@@ -39,7 +51,5 @@ class LazyClientWrapper
 
             $this->_client->setTimeout($this->_timeout);
         }
-
-        return call_user_func_array([$this->_client, $name], $arguments);
     }
 }
