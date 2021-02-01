@@ -1,8 +1,7 @@
 <?php
 namespace Juwai\LaravelZeroRPC\Services;
 
-use Log;
-use ZeroRPC\Client;
+use Juwai\LaravelZeroRPC\Services\LazyClientWrapper;
 
 class ZeroRPCFactory
 {
@@ -21,11 +20,13 @@ class ZeroRPCFactory
         }
 
         $context = $context ?: $this->context;
-        $client = new Client($serviceName, $version, $context);
-        if ($timeout == null) {
-            $timeout = env('DEFAULT_RPC_TIMEOUT', 1000);
-        }
-        $client->setTimeout($timeout);
+
+        $client = new LazyClientWrapper(
+            $serviceName,
+            $version,
+            $context,
+            $timeout
+        );
 
         self::$_clients[$key] = $client;
 
